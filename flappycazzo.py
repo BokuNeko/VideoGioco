@@ -28,7 +28,7 @@ def inizializza():
     uccellox,uccelloy = 60,150
     uccello_vely = 0
     
-inizializza
+inizializza()
 
 while True:
     uccello_vely +=1
