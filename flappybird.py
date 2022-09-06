@@ -13,12 +13,9 @@ import random
 
 pygame.init() 
 
-<<<<<<< Updated upstream
 pathImg = os.path.dirname("Videogioco/assets/img/soap-bubble.jpg")
-=======
 ###Carico le immagini###
 pathImg = os.path.dirname("assets/img/soap-bubble.jpg")
->>>>>>> Stashed changes
 bollaSapone = os.path.join(pathImg, "soap-bubble.jpg")
 occhiGatto = os.path.join(pathImg, "cats-eyes.jpg")
 lightblue = os.path.join(pathImg, "base.png")
@@ -32,10 +29,8 @@ gameover = pygame.image.load('')
 #tubo_giu = pygame.image.load('')
 #tubo_su = pygame.transform.flip(tubo_giu,False,True)
 
-<<<<<<< Updated upstream
-=======
+
 ###Dimensioni della finestra di gioco
->>>>>>> Stashed changes
 info = pygame.display.Info() 
 screenWidth,screenHeight = info.current_w,info.current_h
 SCHERMO = pygame.display.set_mode((screenWidth, screenHeight - 50), pygame.RESIZABLE)
@@ -66,13 +61,10 @@ def disegna_oggetti():
     SCHERMO.blit(player, (playerX, playerY))
     SCHERMO.blit(base, (baseX, HBASE))
 
-<<<<<<< Updated upstream
-=======
 def hai_perso():
     SCHERMO.blit(gameover,(50,))
 
 ###Ciclo per la caduta del personaggio###
->>>>>>> Stashed changes
 while True:
     baseX -= VELX
     if(baseX <= - WBASE):
@@ -90,7 +82,6 @@ while True:
             pygame.quit()
             exit()
         
-
         if (event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE):
             playerVelY = - 10
             playerY += playerVelY
