@@ -14,7 +14,7 @@ import random
 pygame.init() 
 
 ###Carico le immagini###
-pathImg = os.path.dirname("Videogioco/assets/img/soap-bubble.jpg")
+pathImg = os.path.dirname("assets/img/soap-bubble.jpg")
 bollaSapone = os.path.join(pathImg, "soap-bubble.jpg")
 occhiGatto = os.path.join(pathImg, "cats-eyes.jpg")
 lightblue = os.path.join(pathImg, "base.png")
