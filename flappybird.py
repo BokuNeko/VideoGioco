@@ -15,25 +15,28 @@ pygame.init()
 pathImg = os.path.dirname("Videogioco/assets/img/soap-bubble.jpg")
 bollaSapone = os.path.join(pathImg, "soap-bubble.jpg")
 occhiGatto = os.path.join(pathImg, "cats-eyes.jpg")
+lightblue = os.path.join(pathImg, "base.png")
 
 player = pygame.image.load(bollaSapone)
 sfondo = pygame.image.load(occhiGatto)
 
-#base = pygame.image.load('')
+base = pygame.image.load(lightblue)
 #gameover = pygame.image.load('')
 #tubo_giu = pygame.image.load('')
 #tubo_su = pygame.transform.flip(tubo_giu,False,True)
 
 info = pygame.display.Info() 
 screenWidth,screenHeight = info.current_w,info.current_h
-SCHERMO = pygame.display.set_mode((screenWidth - 10, screenHeight - 50), pygame.RESIZABLE)
-#SCHERMO = pygame.display.set_mode((screenWidth - 10, screenHeight - 50), pygame.FULLSCREEN)
+SCHERMO = pygame.display.set_mode((screenWidth, screenHeight - 50), pygame.RESIZABLE)
+#SCHERMO = pygame.display.set_mode((screenWidth, screenHeight - 50), pygame.FULLSCREEN)
 FPS = 50
+VELX = 5
 
 def inizializza():
-    global playerX,playerY,playerVelY
+    global playerX,playerY,playerVelY,baseX
     playerX,playerY = 60,150
     playerVelY = 0
+    baseX = 0
     
 inizializza()
 
@@ -42,11 +45,16 @@ def aggiorna():
     pygame.time.Clock().tick(FPS)
 
 def disegna_oggetti():
+    pygame.Surface.fill(SCHERMO, (0, 0, 0))
     SCHERMO.blit(sfondo, (0,0))
     SCHERMO.blit(player, (playerX, playerY))
+    SCHERMO.blit(base, (baseX, screenHeight - (screenHeight / 6)))
 
 while True:
-    playerVelY +=1
+    playerVelY += 0.5
+    baseX -= VELX
+    if(baseX <= -(screenWidth - screenWidth / 5) ):
+        baseX = 0
     playerY += playerVelY
     disegna_oggetti()
     aggiorna()
@@ -54,3 +62,7 @@ while True:
             if event.type == pygame.QUIT:
                 pygame.quit()
                 exit()
+            
+
+            if (event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE):
+                playerVelY = - 10
