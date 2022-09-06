@@ -24,7 +24,7 @@ scritta = os.path.join(pathImg, "gameover.png")
 player = pygame.image.load(bollaSapone)
 sfondo = pygame.image.load(occhiGatto)
 base = pygame.image.load(lightblue)
-gameover = pygame.image.load('scritta')
+gameover = pygame.image.load(scritta)
 #tubo_giu = pygame.image.load('')
 #tubo_su = pygame.transform.flip(tubo_giu,False,True)
 
