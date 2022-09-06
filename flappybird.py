@@ -24,7 +24,10 @@ sfondo = pygame.image.load(occhiGatto)
 #tubo_giu = pygame.image.load('')
 #tubo_su = pygame.transform.flip(tubo_giu,False,True)
 
-SCHERMO = pygame.display.set_mode((288, 512))
+info = pygame.display.Info() 
+screenWidth,screenHeight = info.current_w,info.current_h
+SCHERMO = pygame.display.set_mode((screenWidth - 10, screenHeight - 50), pygame.RESIZABLE)
+#SCHERMO = pygame.display.set_mode((screenWidth - 10, screenHeight - 50), pygame.FULLSCREEN)
 FPS = 50
 
 def inizializza():
@@ -47,3 +50,7 @@ while True:
     playerY += playerVelY
     disegna_oggetti()
     aggiorna()
+    for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                exit()
