@@ -13,19 +13,19 @@ import random
 
 pygame.init() 
 
-pathImg = os.path.dirname("Videogioco/assets/img/soap-bubble.jpg")
 ###Carico le immagini###
 pathImg = os.path.dirname("assets/img/soap-bubble.jpg")
 bollaSapone = os.path.join(pathImg, "soap-bubble.jpg")
 occhiGatto = os.path.join(pathImg, "cats-eyes.jpg")
 lightblue = os.path.join(pathImg, "base.png")
-gameover = os.path.join(pathImg, "gameover.png")
+scritta = os.path.join(pathImg, "gameover.png")
 
+###Assegno le immagini
 player = pygame.image.load(bollaSapone)
 sfondo = pygame.image.load(occhiGatto)
 
 base = pygame.image.load(lightblue)
-gameover = pygame.image.load('')
+gameover = pygame.image.load('scritta')
 #tubo_giu = pygame.image.load('')
 #tubo_su = pygame.transform.flip(tubo_giu,False,True)
 
@@ -62,7 +62,9 @@ def disegna_oggetti():
     SCHERMO.blit(base, (baseX, HBASE))
 
 def hai_perso():
-    SCHERMO.blit(gameover,(50,))
+    #Posizione dove comparirà il gameover
+    SCHERMO.blit(gameover,(50,180))
+    aggiorna()
 
 ###Ciclo per la caduta del personaggio###
 while True:
@@ -73,7 +75,11 @@ while True:
     if(playerY <= (HBASE - 70)):
         playerVelY += 0.5
         playerY += playerVelY
-        
+    
+    #Posizione di gamover
+    if playerY >= HBASE #Il gameover c'è quando il personaggio tocca la base (y = 0 è la parte più alta dello schermo)
+        hai_perso()
+
     disegna_oggetti()
     aggiorna()
 
