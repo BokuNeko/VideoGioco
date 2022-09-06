@@ -2,7 +2,7 @@
 """
 Created on Sun Sep  4 16:41:44 2022
 
-@author: GATTO ma pure Alessio
+@author: GATTO ma pure Alessio LOL
 """
 
 #
