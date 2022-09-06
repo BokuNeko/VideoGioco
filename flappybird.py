@@ -80,7 +80,7 @@ while True:
         playerY += playerVelY
     
     #Posizione di gamover
-    if playerY >= HBASE #Il gameover c'è quando il personaggio tocca la base (y = 0 è la parte più alta dello schermo)
+    if playerY >= HBASE: #Il gameover c'è quando il personaggio tocca la base (y = 0 è la parte più alta dello schermo)
         hai_perso()
 
     disegna_oggetti()
