@@ -31,6 +31,8 @@ SCHERMO = pygame.display.set_mode((screenWidth, screenHeight - 50), pygame.RESIZ
 #SCHERMO = pygame.display.set_mode((screenWidth, screenHeight - 50), pygame.FULLSCREEN)
 FPS = 50
 VELX = 5
+HBASE = screenHeight - (screenHeight / 6)
+WBASE = (screenWidth - screenWidth / 5)
 
 def inizializza():
     global playerX,playerY,playerVelY,baseX
@@ -48,21 +50,26 @@ def disegna_oggetti():
     pygame.Surface.fill(SCHERMO, (0, 0, 0))
     SCHERMO.blit(sfondo, (0,0))
     SCHERMO.blit(player, (playerX, playerY))
-    SCHERMO.blit(base, (baseX, screenHeight - (screenHeight / 6)))
+    SCHERMO.blit(base, (baseX, HBASE))
 
 while True:
-    playerVelY += 0.5
     baseX -= VELX
-    if(baseX <= -(screenWidth - screenWidth / 5) ):
+    if(baseX <= - WBASE):
         baseX = 0
-    playerY += playerVelY
+        
+    if(playerY <= (HBASE - 70)):
+        playerVelY += 0.5
+        playerY += playerVelY
+        
     disegna_oggetti()
     aggiorna()
-    for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                exit()
-            
 
-            if (event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE):
-                playerVelY = - 10
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            exit()
+        
+
+        if (event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE):
+            playerVelY = - 10
+            playerY += playerVelY
